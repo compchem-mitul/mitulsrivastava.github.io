@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Mitul Srivastava, Ph.D. Computational chemist at Umeå University working on molecular dynamics, enhanced sampling and AI-guided structural modeling of enzyme–substrate recognition and drug discovery.">
+<meta property="og:title" content="Mitul Srivastava, Ph.D.">
+<meta property="og:description" content="Computational chemist · Umeå University · molecular dynamics, free-energy methods and AI-guided structural modeling.">
+<meta property="og:image" content="photo.jpg">
+<style>img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Mitul Srivastava, Ph.D.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky name + tab bar; each tab is a single-column reading view (max ~1040px) with a two-column hero on Home. */
+:root{
+  --paper:#F3F6F6; --surface:#FFFFFF; --ink:#15212A; --muted:#566570; --line:#D6DEE1;
+  --accent:#0B6672; --accent-soft:#E0EDEE; --amber:#A86400;
+  --f-display:"Familjen Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --s-xs:.8rem; --s-sm:.9rem; --s-md:1.05rem; --s-lg:1.35rem; --s-xl:1.9rem; --s-xxl:clamp(2.3rem,5.4vw,3.6rem);
+  --wrap:1040px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1417; --surface:#151D21; --ink:#E4EBED; --muted:#94A3AB; --line:#25323A;
+  --accent:#62C3CC; --accent-soft:#15323A; --amber:#E2A64E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1417; --surface:#151D21; --ink:#E4EBED; --muted:#94A3AB; --line:#25323A;
+  --accent:#62C3CC; --accent-soft:#15323A; --amber:#E2A64E; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--s-md);line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-size:var(--s-xs);letter-spacing:.01em}
+.eyebrow{font-family:var(--f-display);font-size:var(--s-xs);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:24px;padding-block:12px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand span{color:var(--muted);font-weight:500}
+nav{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;justify-content:flex-end}
+nav a{display:block;font-family:var(--f-display);font-size:var(--s-sm);font-weight:500;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:6px;white-space:nowrap}
+nav a:hover{color:var(--ink);background:var(--accent-soft)}
+nav a[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
+@media (max-width:760px){.bar{flex-direction:column;align-items:stretch;gap:6px;padding-block:10px 6px}nav ul{justify-content:flex-start}nav a{padding:6px 8px}}
+
+main{padding-block:44px 64px}
+.view{display:grid;gap:48px}
+.view[hidden]{display:none!important}
+.head{display:grid;gap:8px;max-width:68ch}
+.head h1{font-size:var(--s-xl);font-weight:700}
+.head p{margin:0;color:var(--muted)}
+section.block{display:grid;gap:18px}
+section.block>h2{font-size:var(--s-lg);font-weight:600;display:flex;align-items:baseline;gap:12px}
+section.block>h2 .mono{color:var(--muted);font-weight:400}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:44px;align-items:start}
+.portrait{margin:0;display:grid;gap:10px}
+.portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;background:var(--line)}
+.portrait figcaption{color:var(--muted)}
+.intro{display:grid;gap:16px;min-width:0}
+.intro h1{font-size:var(--s-xxl);font-weight:700;letter-spacing:-.02em}
+.intro h1 small{font-size:.42em;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:.2em}
+.role{font-family:var(--f-display);font-size:var(--s-lg);font-weight:500;line-height:1.35;margin:0}
+.role span{color:var(--muted)}
+.ids{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);margin:0;padding:0;list-style:none}
+.ids b{color:var(--ink);font-weight:500}
+.bio{display:grid;gap:12px;max-width:66ch}
+.bio p{margin:0}
+.links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font-family:var(--f-display);font-size:var(--s-sm);font-weight:600;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.email{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:6px;padding:3px 3px 3px 12px;background:var(--surface)}
+.email .mono{user-select:all;font-size:var(--s-sm)}
+.email .btn{border:0;background:var(--accent-soft);color:var(--accent);padding:4px 10px}
+@media (max-width:720px){.hero{grid-template-columns:1fr;gap:24px}.portrait{max-width:220px}}
+
+/* free-energy ornament */
+.landscape{display:block;width:100%;height:64px;color:var(--accent)}
+.landscape-wrap{display:grid;gap:4px}
+.landscape-wrap .mono{color:var(--muted);display:flex;justify-content:space-between}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.metric{padding:16px 14px 14px;display:grid;gap:2px;border-left:1px solid var(--line)}
+.metric:first-child{border-left:0;padding-left:0}
+.metric b{font-family:var(--f-display);font-size:2rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.metric span{font-family:var(--f-display);font-size:var(--s-sm);color:var(--muted)}
+.note{color:var(--muted);margin:0}
+@media (max-width:720px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric,.metric:first-child{border-left:0;padding-left:0;border-top:1px solid var(--line)}.metric:nth-child(-n+2){border-top:0}.metric:nth-child(5){grid-column:1/-1}}
+
+/* research cards */
+.themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:10px;align-content:start}
+.theme h3{font-size:1.12rem;font-weight:600}
+.theme p{margin:0;font-size:var(--s-sm);line-height:1.6}
+.theme .tag{color:var(--amber)}
+.theme ul{margin:0;padding-left:1.1em;font-size:var(--s-sm)}
+.tools{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tools li{font-family:var(--f-mono);font-size:.74rem;padding:2px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+
+/* publications */
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--f-display);font-size:var(--s-sm);font-weight:500;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip .n{font-family:var(--f-mono);font-size:.72rem;margin-left:6px;opacity:.75}
+.yeargroup{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;border-top:1px solid var(--line);padding-top:14px}
+.yeargroup>h3{font-family:var(--f-mono);font-size:var(--s-sm);font-weight:500;color:var(--muted);padding-top:3px}
+.pubs{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.pub{display:grid;gap:3px}
+.pub .t{font-family:var(--f-display);font-weight:600;font-size:1.02rem;line-height:1.35;color:var(--ink)}
+.pub a.t{text-decoration:none}
+.pub a.t:hover{color:var(--accent);text-decoration:underline}
+.pub .a{font-size:var(--s-sm);color:var(--muted);line-height:1.5}
+.pub .a strong{color:var(--ink);font-weight:600}
+.pub .j{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font-size:var(--s-sm)}
+.pub .j em{color:var(--ink)}
+.badge{font-family:var(--f-display);font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:1px 7px;border-radius:3px;border:1px solid currentColor}
+.badge.first{color:var(--accent)}
+.badge.status{color:var(--amber)}
+.doi{color:var(--muted)}
+@media (max-width:560px){.yeargroup{grid-template-columns:1fr;gap:8px}}
+
+/* entries (experience, education, awards, talks) */
+.entries{list-style:none;margin:0;padding:0;display:grid}
+.entry{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding-block:18px;border-top:1px solid var(--line)}
+.entry:first-child{border-top:1px solid var(--ink)}
+.entry .when{font-family:var(--f-mono);font-size:var(--s-xs);color:var(--muted);padding-top:4px;font-variant-numeric:tabular-nums}
+.entry .what{display:grid;gap:6px;min-width:0}
+.entry h3{font-size:1.1rem;font-weight:600}
+.entry .where{font-family:var(--f-display);color:var(--muted);font-size:var(--s-sm)}
+.entry p{margin:0;font-size:var(--s-sm)}
+.entry ul{margin:2px 0 0;padding-left:1.1em;font-size:var(--s-sm);display:grid;gap:4px}
+@media (max-width:560px){.entry{grid-template-columns:1fr;gap:4px}}
+
+/* skills */
+.skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.skillset{border-top:1px solid var(--ink);padding-top:12px;display:grid;gap:10px;align-content:start}
+.skillset h3{font-size:1.02rem;font-weight:600}
+.skillset dl{margin:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;font-size:var(--s-sm)}
+.skillset dt{min-width:0}
+.skillset dd{margin:0;font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-align:right;padding-top:2px}
+.skillset dd.expert{color:var(--accent)}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:22px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--muted);font-family:var(--f-display);font-size:var(--s-sm)}
+
+@media (prefers-reduced-motion:no-preference){.view:not([hidden]){animation:in .25s ease-out}@keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#home">Mitul Srivastava <span>Ph.D.</span></a>
+    <nav aria-label="Sections"><ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- HOME -->
+<div class="view" id="v-home">
+  <div class="hero">
+    <figure class="portrait">
+      <img src="photo.jpg" alt="Portrait of Mitul Srivastava" width="560" height="700">
+      <figcaption class="mono">Umeå, Sweden</figcaption>
+    </figure>
+    <div class="intro">
+      <div class="eyebrow">Computational chemistry · Molecular dynamics · AI-guided structural modeling</div>
+      <h1>Mitul Srivastava<small>Ph.D.</small></h1>
+      <p class="role">Research Scientist <span>· Department of Chemistry, Umeå University, Sweden</span></p>
+      <ul class="ids mono">
+        <li>h-index <b>15</b></li>
+        <li>citations <b>726</b></li>
+        <li>ORCID <b>0000-0002-6283-7645</b></li>
+      </ul>
+      <div class="bio">
+        <p>I am a computational chemist working on how enzymes recognize their substrates and how small molecules can be designed to interfere with that recognition. At Umeå University I work with the groups of Anna Linusson (Chemistry) and Yuri Schwartz (Molecular Biology), combining AI-based structure prediction with long-timescale molecular dynamics to study SET-domain lysine methyltransferases such as ASH1L.</p>
+        <p>I did my Ph.D. in Pharmaceutical Sciences (Computational Chemistry) at DPSRU and the Translational Health Science and Technology Institute (THSTI), India, with Prof. Shailendra Asthana. There I used enhanced sampling and free-energy methods to discover and explain allosteric inhibitors of the deubiquitinase USP7, and later led virtual screening campaigns against IRGM and CXCR3 that produced hits active in cells and animal models.</p>
+        <p>My work is applied and collaborative: most of my projects pair simulations with experimental partners in biochemistry, cell biology and infection biology. My postdoc in Sweden was funded by a Kempestiftelserna fellowship.</p>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://scholar.google.com/citations?user=T2jWFZIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn" href="https://orcid.org/0000-0002-6283-7645" target="_blank" rel="noopener">ORCID</a>
+        <a class="btn" href="https://www.scopus.com/authid/detail.uri?authorId=57204029733" target="_blank" rel="noopener">Scopus</a>
+        <span class="email"><span class="mono" id="email">mitulsri109@gmail.com</span><button class="btn" type="button" id="copy-email">Copy</button></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="landscape-wrap" aria-hidden="true">
+    <svg class="landscape" viewBox="0 0 1000 64" preserveAspectRatio="none">
+      <path d="M0 18 C 60 18, 90 52, 150 54 S 240 10, 300 12 S 380 40, 430 44 S 520 6, 590 8 S 690 58, 760 58 S 860 22, 920 24 S 980 30, 1000 30" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <div class="mono"><span>free energy</span><span>reaction coordinate →</span></div>
+  </div>
+
+  <section class="block">
+    <h2>Record <span class="mono">Scopus / Google Scholar, July 2026</span></h2>
+    <div class="metrics">
+      <div class="metric"><b>726</b><span>Citations</span></div>
+      <div class="metric"><b>15</b><span>h-index</span></div>
+      <div class="metric"><b>17</b><span>i10-index</span></div>
+      <div class="metric"><b>10</b><span>First or shared-first author papers</span></div>
+      <div class="metric"><b>3</b><span>Indian patent applications</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Current work</h2>
+    <div class="themes">
+      <article class="theme">
+        <span class="mono tag">Umeå · 2024–</span>
+        <h3>Substrate recognition by SET-domain methyltransferases</h3>
+        <p>AlphaFold3-seeded microsecond MD of Ash1/ASH1L reveals an active conformation not seen in crystal structures, which I use to search for new non-histone substrates with protein–peptide modeling and experimental validation.</p>
+      </article>
+      <article class="theme">
+        <span class="mono tag">Umeå · 2024–</span>
+        <h3>Trypanosoma brucei metacaspases</h3>
+        <p>AI-driven structural modeling combined with biological evaluation to explain how these parasite proteases are organized and activated.</p>
+      </article>
+      <article class="theme">
+        <span class="mono tag">Ph.D. · 2018–2023</span>
+        <h3>Allosteric inhibition of USP7</h3>
+        <p>Cryptic-pocket discovery, metadynamics and umbrella sampling to explain why some USP7 inhibitors bind more tightly, leading to a new inhibitor with enzymatic and cellular activity.</p>
+      </article>
+    </div>
+    <p><a href="#research">More on my research →</a></p>
+  </section>
+
+  <section class="block">
+    <h2>Recent publications</h2>
+    <ul class="pubs" id="recent-pubs"></ul>
+    <p><a href="#publications">All publications and patents →</a></p>
+  </section>
+</div>
+
+<!-- RESEARCH -->
+<div class="view" id="v-research" hidden>
+  <div class="head">
+    <div class="eyebrow">Research</div>
+    <h1>Simulations that explain recognition, and use it to find molecules</h1>
+    <p>I treat AI structure prediction as a starting point, not an answer: predicted models seed long MD runs and enhanced sampling, which tell us which conformations are real, how ligands and substrates bind, and where to intervene.</p>
+  </div>
+
+  <section class="block">
+    <h2>Themes</h2>
+    <div class="themes">
+      <article class="theme">
+        <span class="mono tag">Epigenetics</span>
+        <h3>Ash1/ASH1L and non-histone substrates</h3>
+        <p>ASH1L is a SET-domain lysine methyltransferase linked to development and disease. Starting from AlphaFold3 models, microsecond MD exposed a catalytically competent groove that crystal structures do not show. I use this state to rank candidate substrate peptides by docking and interface dynamics, and the best candidates go to the Schwartz lab for testing.</p>
+        <ul class="tools"><li>AlphaFold3</li><li>µs MD</li><li>HPEPDOCK</li><li>HDOCK</li><li>PIPER</li></ul>
+      </article>
+      <article class="theme">
+        <span class="mono tag">Parasite proteases</span>
+        <h3>Metacaspases of Trypanosoma brucei</h3>
+        <p>Structure prediction and ensemble simulations, checked against biological experiments, to work out the structure–function relationships of these cysteine proteases. Manuscript in preparation with Anna Linusson.</p>
+        <ul class="tools"><li>AlphaFold3</li><li>Boltz</li><li>Chai</li><li>MD ensembles</li></ul>
+      </article>
+      <article class="theme">
+        <span class="mono tag">Oncology · DUBs</span>
+        <h3>Allosteric checkpoints in USP7</h3>
+        <p>MD mapped druggable hotspots and cryptic pockets in the deubiquitinase USP7. Metadynamics, binding-pose metadynamics and umbrella sampling explained the (un)binding of known inhibitors and guided a structure-based workflow that found a new inhibitor, published in JCIM (2025).</p>
+        <ul class="tools"><li>Metadynamics</li><li>Umbrella sampling</li><li>MM/GBSA</li><li>Glide</li></ul>
+      </article>
+      <article class="theme">
+        <span class="mono tag">Infection · Inflammation</span>
+        <h3>Structure-based discovery with experimental partners</h3>
+        <p>Virtual screening and MD for targets in tuberculosis (ArgA, PPK1, proteasome), SARS-CoV-2 (RdRp, main protease), dengue (CXCR3) and chikungunya, plus SIRT1 and IRGM, several of which led to compounds with in vitro and in vivo activity and three patent applications.</p>
+        <ul class="tools"><li>Virtual screening</li><li>FEP+</li><li>Pharmacophores</li><li>QSAR</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Computing</h2>
+    <p class="note" style="max-width:66ch">Large simulation campaigns run on Swedish national HPC through NAISS, on Kebnekaise (HPC2N) and Dardel (PDC), managed with SLURM and Python automation.</p>
+  </section>
+</div>
+
+<!-- PUBLICATIONS -->
+<div class="view" id="v-publications" hidden>
+  <div class="head">
+    <div class="eyebrow">Publications</div>
+    <h1>Papers, preprints and patents</h1>
+    <p>My name is in bold. † marks shared first authorship. A complete, up-to-date list is on <a href="https://scholar.google.com/citations?user=T2jWFZIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Filter publications" id="filters"></div>
+  <div id="pub-list" style="display:grid;gap:22px"></div>
+
+  <section class="block">
+    <h2>Patent applications <span class="mono">India</span></h2>
+    <ul class="entries">
+      <li class="entry"><div class="when">2026 · filed May</div><div class="what"><h3>Small molecule inhibitor of IRGM for autophagy</h3><p class="where">Asthana S., Srivastava M., et al. · In review</p></div></li>
+      <li class="entry"><div class="when">2021 · filed Aug</div><div class="what"><h3>Amino acid-derived 5-pyrazolyl methylidene rhodanine carboxylic acids as selective SIRT-1 inhibitors</h3><p class="where">Asthana S., Srivastava M., et al. · Application 202011005512 · In review</p></div></li>
+      <li class="entry"><div class="when">2020 · filed Feb</div><div class="what"><h3>1,2-Disubstituted benzimidazolyl amino acids as selective SIRT-1 inhibitors</h3><p class="where">Asthana S., Srivastava M., et al. · Application 202011005513 · In review</p></div></li>
+    </ul>
+  </section>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="view" id="v-experience" hidden>
+  <div class="head"><div class="eyebrow">Experience</div><h1>Positions</h1></div>
+  <ul class="entries">
+    <li class="entry"><div class="when">2026 – present</div><div class="what">
+      <h3>Research Scientist</h3><div class="where">Department of Chemistry, Umeå University, Sweden</div>
+      <p>Continuing the ASH1L and metacaspase projects with the Linusson and Schwartz groups.</p></div></li>
+    <li class="entry"><div class="when">Jun 2024 – 2026</div><div class="what">
+      <h3>Postdoctoral Fellow, Kempestiftelserna Fellowship</h3><div class="where">Department of Chemistry, Umeå University, Sweden</div>
+      <ul>
+        <li>Built a systematic computational workflow to find new substrates of lysine methyltransferases.</li>
+        <li>Modeled KMT–substrate interfaces with HDOCK, HPEPDOCK, PIPER and MD; prioritized candidates advanced to experimental validation.</li>
+        <li>Coordinated work between computational predictions and wet-lab partners.</li>
+        <li>Ran large-scale simulations on NAISS resources (Kebnekaise, Dardel).</li>
+      </ul></div></li>
+    <li class="entry"><div class="when">May 2023 – Mar 2024</div><div class="what">
+      <h3>Junior Research Scientist</h3><div class="where">Translational Health Science and Technology Institute (THSTI), India</div>
+      <ul>
+        <li>Designed end-to-end virtual screening workflows (Glide SP/XP) against IRGM and CXCR3, giving potent hits confirmed in vitro and in vivo.</li>
+        <li>Benchmarked workflows to improve screening efficiency and hit prioritization.</li>
+        <li>Trained junior researchers in MD, virtual screening and analysis.</li>
+      </ul></div></li>
+    <li class="entry"><div class="when">Aug 2018 – Nov 2022</div><div class="what">
+      <h3>Ph.D. Researcher, Computational Chemistry</h3><div class="where">DPSRU &amp; THSTI, India</div>
+      <ul>
+        <li>Discovered a new allosteric USP7 inhibitor with enzymatic and cellular activity.</li>
+        <li>Used metadynamics, binding-pose metadynamics, umbrella sampling and per-residue MM/GBSA to explain binding mechanisms.</li>
+        <li>Published in J. Chem. Inf. Model. and Protein Science.</li>
+      </ul></div></li>
+    <li class="entry"><div class="when">Sep 2016 – Aug 2018</div><div class="what">
+      <h3>Senior Research Fellow / Project Associate</h3><div class="where">THSTI, India</div>
+      <p>Combined natural-product libraries with structure-based methods to find leads for metabolic syndrome targets.</p></div></li>
+    <li class="entry"><div class="when">Dec 2014 – Sep 2016</div><div class="what">
+      <h3>Project Associate</h3><div class="where">International Centre for Genetic Engineering and Biotechnology (ICGEB), India</div>
+      <p>Structural bioinformatics and docking of deubiquitinating enzymes as oncology targets.</p></div></li>
+  </ul>
+</div>
+
+<!-- EDUCATION -->
+<div class="view" id="v-education" hidden>
+  <div class="head"><div class="eyebrow">Education</div><h1>Degrees and training</h1></div>
+  <ul class="entries">
+    <li class="entry"><div class="when">2018 – 2023</div><div class="what">
+      <h3>Ph.D. in Pharmaceutical Sciences (Computational Chemistry)</h3><div class="where">Delhi Pharmaceutical Sciences and Research University (DPSRU) &amp; THSTI, India</div>
+      <p>Advisor: Prof. Shailendra Asthana. Thesis work on the dynamics and allosteric inhibition of USP7. Defended March 2023.</p></div></li>
+    <li class="entry"><div class="when">2011 – 2013</div><div class="what">
+      <h3>M.Sc. in Bioinformatics, First Division</h3><div class="where">University of Allahabad, India</div></div></li>
+    <li class="entry"><div class="when">2008 – 2011</div><div class="what">
+      <h3>B.Sc. in Bioinformatics, First Division</h3><div class="where">Jaipur National University, India</div></div></li>
+    <li class="entry"><div class="when">2026</div><div class="what">
+      <h3>Applications of Free Energy Calculations in Modern Drug Hunting</h3><div class="where">Schrödinger FEP+ certification</div></div></li>
+    <li class="entry"><div class="when">2021</div><div class="what">
+      <h3>Vienna Summer School on Drug Design</h3><div class="where">University of Vienna (virtual)</div></div></li>
+  </ul>
+</div>
+
+<!-- AWARDS -->
+<div class="view" id="v-awards" hidden>
+  <div class="head"><div class="eyebrow">Awards</div><h1>Fellowships, grants and awards</h1></div>
+  <ul class="entries">
+    <li class="entry"><div class="when">2024 – 2026</div><div class="what"><h3>Kempestiftelserna Postdoctoral Fellowship</h3><div class="where">Umeå University, Sweden</div></div></li>
+    <li class="entry"><div class="when">2023</div><div class="what"><h3>EMBO Travel Grant</h3><div class="where">Oral short talk and poster, EMBO Workshop on Computational Structural Biology, EMBL Heidelberg</div></div></li>
+    <li class="entry"><div class="when">2023</div><div class="what"><h3>DPSRU Research Promotion Award</h3><div class="where">For a Ph.D. research paper</div></div></li>
+    <li class="entry"><div class="when">2019</div><div class="what"><h3>DST-AWSAR Award for Best Ph.D. Story Writing</h3><div class="where">“Do You Really Know Proteins?”, a popular-science story on protein structure and dynamics</div></div></li>
+    <li class="entry"><div class="when">2019</div><div class="what"><h3>CSIR Travel Grant</h3><div class="where">Biophysical Society Annual Meeting, Baltimore, USA</div></div></li>
+    <li class="entry"><div class="when">2018 – 2021</div><div class="what"><h3>ICMR Senior Research Fellowship</h3><div class="where">Indian Council of Medical Research, Government of India</div></div></li>
+    <li class="entry"><div class="when">2016</div><div class="what"><h3>IMB Travel Grant</h3><div class="where">Poster and flash talk, 1st RSG-Germany Student Symposium on Computational Genomics, IMB Mainz</div></div></li>
+    <li class="entry"><div class="when">2015</div><div class="what"><h3>Best Poster Award</h3><div class="where">National Conference on Recent Developments in Medical Biotechnology and Structure Based Drug Designing, IIT Guwahati</div></div></li>
+  </ul>
+</div>
+
+<!-- TALKS -->
+<div class="view" id="v-talks" hidden>
+  <div class="head"><div class="eyebrow">Talks</div><h1>Presentations</h1><p>Two selected oral talks and more than 23 posters at 25+ international and national meetings since 2012.</p></div>
+  <section class="block">
+    <h2>Oral talks</h2>
+    <ul class="entries">
+      <li class="entry"><div class="when">Aug 2025</div><div class="what"><h3>Unveiling a crystal-invisible active enzyme state with HPC-powered molecular dynamics simulations</h3><div class="where">NAISS-SUPR Swedish Meeting, Umeå University, Sweden</div></div></li>
+      <li class="entry"><div class="when">Dec 2023</div><div class="what"><h3>Extensive computational biophysics drive in harnessing the pivotal determinants for the discovery of novel inhibitors against USP7</h3><div class="where">EMBO Workshop on Computational Structural Biology, EMBL Heidelberg, Germany (short talk)</div></div></li>
+    </ul>
+  </section>
+  <section class="block">
+    <h2>Selected meetings</h2>
+    <ul class="entries">
+      <li class="entry"><div class="when">Oct 2021</div><div class="what"><h3>Bringing Molecular Structure to Life: 50 Years of the PDB</h3><div class="where">EMBL Conference (virtual)</div></div></li>
+      <li class="entry"><div class="when">Sep 2021</div><div class="what"><h3>Vienna Summer School on Drug Design</h3><div class="where">University of Vienna (virtual)</div></div></li>
+      <li class="entry"><div class="when">Mar 2019</div><div class="what"><h3>Biophysical Society 63rd Annual Meeting</h3><div class="where">Baltimore, USA · poster</div></div></li>
+      <li class="entry"><div class="when">Nov 2016</div><div class="what"><h3>1st RSG-Germany Student Symposium on Computational Genomics</h3><div class="where">Institute of Molecular Biology, Mainz, Germany · poster and flash talk</div></div></li>
+    </ul>
+  </section>
+</div>
+
+<!-- SERVICE -->
+<div class="view" id="v-service" hidden>
+  <div class="head"><div class="eyebrow">Service</div><h1>Reviewing, teaching and outreach</h1></div>
+  <section class="block">
+    <h2>Editorial and reviewing</h2>
+    <ul class="entries">
+      <li class="entry"><div class="when">Review Editor</div><div class="what"><h3>Frontiers in Drug Discovery · Frontiers in Bioinformatics · Frontiers in Molecular Biosciences</h3></div></li>
+      <li class="entry"><div class="when">Reviewer</div><div class="what"><h3>Frontiers journals · Journal of Biomolecular Structure and Dynamics (Taylor &amp; Francis)</h3></div></li>
+    </ul>
+  </section>
+  <section class="block">
+    <h2>Teaching and training</h2>
+    <ul class="entries">
+      <li class="entry"><div class="when">2018, 2022</div><div class="what"><h3>Computational Methods in Drug Discovery workshops</h3><div class="where">THSTI, India, with Schrödinger · co-organizer and trainer</div></div></li>
+      <li class="entry"><div class="when">2023 – 2024</div><div class="what"><h3>Hands-on training of junior researchers</h3><div class="where">THSTI, India</div><p>MD setup (AMBER, GROMACS, Desmond), virtual screening in the Schrödinger Suite and data analysis for M.Sc. and Ph.D. students.</p></div></li>
+    </ul>
+  </section>
+  <section class="block">
+    <h2>Outreach and memberships</h2>
+    <ul class="entries">
+      <li class="entry"><div class="when">2024</div><div class="what"><h3>India International Science Festival (IISF)</h3></div></li>
+      <li class="entry"><div class="when">2019</div><div class="what"><h3>“Do You Really Know Proteins?”</h3><div class="where">Popular-science story, DST-AWSAR award</div></div></li>
+      <li class="entry"><div class="when">2019 – present</div><div class="what"><h3>Member, Biophysical Society</h3></div></li>
+      <li class="entry"><div class="when">2024 – present</div><div class="what"><h3>User, National Academic Infrastructure for Supercomputing in Sweden (NAISS)</h3></div></li>
+    </ul>
+  </section>
+</div>
+
+<!-- SKILLS -->
+<div class="view" id="v-skills" hidden>
+  <div class="head"><div class="eyebrow">Skills</div><h1>Methods and tools</h1></div>
+  <div class="skillgrid">
+    <div class="skillset"><h3>Molecular simulation</h3><dl>
+      <dt>MD: AMBER, GROMACS, Desmond</dt><dd class="expert">expert</dd>
+      <dt>Metadynamics, umbrella sampling, steered MD</dt><dd class="expert">expert</dd>
+      <dt>FEP+, MM/GBSA, MM/PBSA</dt><dd class="expert">expert</dd>
+      <dt>Protein–protein / peptide docking: HDOCK, HPEPDOCK, PIPER</dt><dd class="expert">expert</dd>
+    </dl></div>
+    <div class="skillset"><h3>Drug discovery</h3><dl>
+      <dt>Virtual screening and hit identification</dt><dd class="expert">expert</dd>
+      <dt>Schrödinger Suite: Glide, Prime, Phase, IFD, Canvas</dt><dd class="expert">expert</dd>
+      <dt>Structure- and ligand-based design</dt><dd class="expert">expert</dd>
+      <dt>Docking: AutoDock, GOLD</dt><dd>advanced</dd>
+      <dt>Pharmacophore modeling</dt><dd>advanced</dd>
+      <dt>QSAR / QSPR</dt><dd>intermediate</dd>
+    </dl></div>
+    <div class="skillset"><h3>AI for structural biology</h3><dl>
+      <dt>AlphaFold3, Boltz, Chai, RFdiffusion</dt><dd>advanced</dd>
+      <dt>Homology modeling: MODELLER</dt><dd>advanced</dd>
+      <dt>ML for molecular property prediction</dt><dd>intermediate</dd>
+    </dl></div>
+    <div class="skillset"><h3>Computing</h3><dl>
+      <dt>SLURM workload management</dt><dd class="expert">expert</dd>
+      <dt>NAISS HPC: Kebnekaise, Dardel</dt><dd>advanced</dd>
+      <dt>Linux, shell scripting</dt><dd>advanced</dd>
+      <dt>Python: NumPy, Pandas, Matplotlib</dt><dd>intermediate</dd>
+      <dt>R for visualization</dt><dd>basic</dd>
+    </dl></div>
+  </div>
+</div>
+
+</main>
+
+<footer><div class="wrap"><span>Mitul Srivastava, Ph.D. · Umeå University</span><span>© 2026</span></div></footer>
+
+<script>
+(function(){
+var ME=/Srivastava M\.(†)?/g;
+var P=[
+ {y:"In preparation",s:"prep",f:1,t:"AI-driven modeling and ensemble simulations reveal the active conformation of Ash1/ASH1L responsible for substrate selectivity",a:"Srivastava M., Aparicio A.G., Schwartz Y., Linusson A.",j:"Manuscript in preparation"},
+ {y:"In preparation",s:"prep",f:1,t:"AI-driven modeling coupled with biological evaluation elucidates structure–function mechanism of Trypanosoma brucei metacaspases",a:"Srivastava M., Linusson A., et al.",j:"Manuscript in preparation"},
+ {y:"Under review",s:"review",f:1,t:"Molecular basis of USP7 inhibition by small molecule at allosteric checkpoint",a:"Srivastava M., Kumari D., Majumdar S., Singh N., Mathur R., Maiti T.K., Kumar A., Asthana S.",j:"Journal of Biological Chemistry"},
+ {y:"Under review",s:"review",t:"Cholesterol-mediated activation of VapC12 toxin modulates growth and drug susceptibility in Mycobacterium tuberculosis",a:"Hashmi Z., Singh S.P., Talwar S., Megta A.K., Srivastava M., Sarmadhikari D., Sharma T., Sharma C., Asthana S., Krishnan V., Pandey A.K.",j:"Proc. Natl. Acad. Sci. USA"},
+ {y:"Under review",s:"review",t:"Drug repositioning against the main protease of SARS-CoV-2 using pharmacophore-based screening, docking, and molecular dynamics simulations",a:"Tyagi R., Tripathi M.K., Srivastava M., Sarmadhikari D., Asthana S., Yadav M.K.",j:"Microbial Pathogenesis"},
+ {y:"2025",f:1,t:"Rational computational workflow for structure-guided discovery of a novel USP7 inhibitor",a:"Srivastava M., Kumari D., Majumdar S., Singh N., Mathur R., Maiti T.K., Kumar A., Asthana S.",j:"Journal of Chemical Information and Modeling",d:"10.1021/acs.jcim.4c01400"},
+ {y:"2024",t:"Withaferin A inhibits Chikungunya virus nsP2 protease and shows antiviral activity in the cell culture and mouse model of virus infection",a:"Sharma K.B., Subramani C., Ganesh K., Sharma A., Basu B., Balyan S., Sharma G., Ka S., Deb A., Srivastava M., Chugh S., Sehrawat S., Bharadwaj K., Rout A., Sahoo P.K., Saurav S., Motiani R.K., Singh R., Jain D., Asthana S., Wadhwa R., Vrati S.",j:"PLoS Pathogens",d:"10.1371/journal.ppat.1012816"},
+ {y:"2024",t:"Berbamine prevents SARS-CoV-2 entry and transmission",a:"Sadhu S., Goswami S., Khatri R., Lohiya B., Singh V., Yadav R., Das V., Tripathy M.R., Dwivedi P., Srivastava M., Mani S., Asthana S., Samal S., Awasthi A.",j:"iScience",d:"10.1016/j.isci.2024.111347"},
+ {y:"2024",t:"Hotspot sites microenvironment in OTUB1 drives its stability and aggregation",a:"Majumdar S., Srivastava M., Alam P., Saha S., Chand A.K., Asthana S., Sen S., Maiti T.K.",j:"Journal of Biological Chemistry",d:"10.1016/j.jbc.2024.107315"},
+ {y:"2024",t:"7D inhibits dengue infection and increases the synthesis of IFNα/β and neutralizing-IgG by blocking PF4:CXCR3 pathway",a:"Gaur K.K., Asuru T.R., Srivastava M., Singh N., Purushotham N., Poojary B., Das B., Bhattacharyya S., Asthana S., Guchhait P.",j:"EMBO Molecular Medicine",d:"10.1038/s44321-024-00137-8"},
+ {y:"2024",t:"Polyphosphate Kinase-1 regulates bacterial and host metabolic pathways involved in pathogenesis of Mycobacterium tuberculosis",a:"Chugh S., Tiwari P., Suri C., Gupta S.K., Singh P., Bouzeyen R., Kidwai S., Srivastava M., Rameshwaram N.R., Kumar Y., Asthana S., Singh R.",j:"Proc. Natl. Acad. Sci. USA",d:"10.1073/pnas.230966412"},
+ {y:"2023",f:1,t:"Dynamical characterization of template entrance channel of BVDV RdRp as possible inhibition and resistance site for quinoline tricyclic derivatives",a:"Srivastava M., Mittal L., Sarmadhikari D., Kumar A., Asthana S.",j:"Pharmaceuticals",d:"10.3390/ph16030376"},
+ {y:"2023",s:"preprint",f:1,t:"Unveiling the molecular recognition process between USP7 N-terminal TRAF-like domain and β-catenin for small molecule discovery",a:"Srivastava M., Mathur R., Asthana S.",j:"Research Square (preprint)",d:"10.21203/rs.3.rs-2801152/v1"},
+ {y:"2023",t:"Deciphering the structural determinants critical in attaining the FXR partial agonism",a:"Kumari A., Mittal L., Srivastava M., Pathak D.P., Asthana S.",j:"Journal of Physical Chemistry B",d:"10.1021/acs.jpcb.2c06325"},
+ {y:"2023",t:"Fangchinoline inhibits SARS-CoV-2 and MERS-CoV entry",a:"Sadhu S., Dandotiya J., Dalal R., Khatri R., Mykytyn A.Z., Batra A., Kaur M., Chandwaskar R., Singh V., Kamboj A., Srivastava M., Mani S., Asthana S., Samal S., Rizvi A.Z., Salunke D.B., Haagmans B.L., Awasthi A.",j:"Antiviral Research",d:"10.1016/j.antiviral.2023.105743"},
+ {y:"2023",t:"SARS-CoV-2 envelope protein attain Kac mediated dynamical interaction network to adopt “histone mimic” at BRD4 interface",a:"Agrahari A.K., Srivastava M., Singh M., Asthana S.",j:"Journal of Biomolecular Structure and Dynamics",d:"10.1080/07391102.2023.2188430"},
+ {y:"2022",f:1,t:"Characterizing (un)binding mechanism of USP7 inhibitors to unravel the cause of enhanced binding potencies at allosteric checkpoint",a:"Srivastava M., Mittal L., Kumari A., Agrahari A.K., Singh M., Mathur R., Asthana S.",j:"Protein Science",d:"10.1002/pro.4398"},
+ {y:"2022",t:"Identification and validation of potent inhibitor of Escherichia coli DHFR from MMV pathogen box",a:"Sharma S., Tyagi R., Srivastava M., Rani K., Kumar D., Asthana S., Raj V.S.",j:"Journal of Biomolecular Structure and Dynamics",d:"10.1080/07391102.2022.2080113"},
+ {y:"2021",f:1,t:"Identification of diphenyl furan derivatives via high throughput and computational studies as ArgA inhibitors of Mycobacterium tuberculosis",a:"Khurana H.†, Srivastava M.†, Chaudhary D., Gosain T.P., Kumari R., Bean A.C., Chugh S., Maiti T.K., Stephens C.E., Asthana S., Singh R.",j:"International Journal of Biological Macromolecules",d:"10.1016/j.ijbiomac.2021.11.017"},
+ {y:"2021",f:1,t:"Molecular dynamics simulations reveal the interaction fingerprint of remdesivir triphosphate pivotal in allosteric regulation of SARS-CoV-2 RdRp",a:"Srivastava M.†, Mittal L.†, Kumari A.†, Asthana S.",j:"Frontiers in Molecular Biosciences",d:"10.3389/fmolb.2021.639614"},
+ {y:"2021",f:1,t:"Binding mode characterization of 13b in the monomeric and dimeric states of SARS-CoV-2 main protease using molecular dynamics simulations",a:"Kumari A.†, Mittal L.†, Srivastava M.†, Asthana S.",j:"Journal of Biomolecular Structure and Dynamics",d:"10.1080/07391102.2021.1927844"},
+ {y:"2021",t:"Interplay among structural stability, plasticity, and energetics determined by conformational attuning of flexible loops in PD-1",a:"Mittal L., Srivastava M., Kumari A., Tonk R., Awasthi A., Asthana S.",j:"Journal of Chemical Information and Modeling",d:"10.1021/acs.jcim.0c01080"},
+ {y:"2021",t:"Elucidation of structural determinants delineates the residues playing key roles in differential dynamics and selective inhibition of Sirt1–3",a:"Singh M., Srivastava M., Wakode S.R., Asthana S.",j:"Journal of Chemical Information and Modeling",d:"10.1021/acs.jcim.0c01193"},
+ {y:"2021",t:"Computational study of novel inhibitory molecule, 1-(4-((2S,3S)-3-amino-2-hydroxy-4-phenylbutyl)piperazin-1-yl)-3-phenylurea, with high potential to competitively block ATP binding to the RNA dependent RNA polymerase of SARS-CoV-2 virus",a:"Sharma P.P., Kumar S., Srivastava S., Srivastava M., Jee B., Gorobets N.Y., Kumar D., Kumar M., Asthana S., Zhang P., Poonam, Zoltner M., Rathi B.",j:"Journal of Biomolecular Structure and Dynamics",d:"10.1080/07391102.2021.1940281"},
+ {y:"2021",t:"Conformational characterization of the co-activator binding site revealed the mechanism to achieve the bioactive state of FXR",a:"Kumari A., Mittal L., Srivastava M., Pathak D.P., Asthana S.",j:"Frontiers in Molecular Biosciences",d:"10.3389/fmolb.2021.658312"},
+ {y:"2020",f:1,t:"Identification of potential molecules against COVID-19 main protease through structure-guided virtual screening approach",a:"Mittal L.†, Kumari A.†, Srivastava M.†, Singh M., Asthana S.",j:"Journal of Biomolecular Structure and Dynamics",d:"10.1080/07391102.2020.1768151"},
+ {y:"2020",t:"Development of potential proteasome inhibitors against Mycobacterium tuberculosis",a:"Tyagi R., Srivastava M., Jain P., Pandey R.P., Asthana S., Kumar D., Raj V.S.",j:"Journal of Biomolecular Structure and Dynamics",d:"10.1080/07391102.2020.1835722"},
+ {y:"2020",t:"Identification and characterization of in vitro and in vivo fidarestat metabolites: toxicity and efficacy evaluation of metabolites",a:"Borkar R., Shankar G., Mohammed S.A., Srivastava M., Reddy V., Ahmed K., Asthana S., Banerjee S.K., Ragampeta S.",j:"Journal of Mass Spectrometry",d:"10.1002/jms.4694"},
+ {y:"2020",s:"abstract",t:"Molecular dynamics simulation reveals new pocket for the design of novel amino acid coupled Sirt1 selective inhibitor",a:"Singh M., Srivastava M., Purushotham N., Paramesha B., Wakode S.R., Poojary B., Banerjee S.K., Asthana S.",j:"Biophysical Journal (abstract)",d:"10.1016/j.bpj.2019.11.1239"},
+ {y:"2019",s:"abstract",f:1,t:"What modulates the USP7 function… a dynamic pocket or inter-regulatory domains?",a:"Srivastava M., Suri C., Asthana S.",j:"Biophysical Journal (abstract)",d:"10.1016/j.bpj.2018.11.1856"},
+ {y:"2018",f:1,t:"Molecular dynamics simulations reveal the possible druggable hotspots of ubiquitin specific protease 7",a:"Srivastava M., Suri C., Singh M., Mathur R., Asthana S.",j:"Oncotarget",d:"10.18632/oncotarget.26136"}
+];
+var STATUS={prep:"In preparation",review:"Under review",preprint:"Preprint",abstract:"Abstract"};
+function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function item(p){
+  var url=p.d?"https://doi.org/"+p.d:null;
+  var title=url?'<a class="t" href="'+url+'" target="_blank" rel="noopener">'+esc(p.t)+'</a>':'<span class="t">'+esc(p.t)+'</span>';
+  var badges=(p.f?'<span class="badge first">'+(p.a.indexOf("Srivastava M.†")>-1?"Shared first":"First author")+'</span>':'')+(p.s?'<span class="badge status">'+STATUS[p.s]+'</span>':'');
+  return '<li class="pub">'+title+'<div class="a">'+esc(p.a).replace(ME,function(m){return "<strong>"+m+"</strong>"})+'</div><div class="j"><em>'+esc(p.j)+'</em>'+badges+(p.d?'<span class="mono doi">doi:'+esc(p.d)+'</span>':'')+'</div></li>';
+}
+var FILTERS=[["all","All",function(){return true}],["first","First author",function(p){return p.f&&p.s!=="abstract"}],["published","Published",function(p){return !p.s}],["pending","In prep, review & preprints",function(p){return p.s==="prep"||p.s==="review"||p.s==="preprint"}],["abstract","Abstracts",function(p){return p.s==="abstract"}]];
+var current="all";
+function render(){
+  var fn=FILTERS.filter(function(f){return f[0]===current})[0][2];
+  var groups=[],map={};
+  P.filter(fn).forEach(function(p){if(!map[p.y]){map[p.y]=[];groups.push(p.y)}map[p.y].push(p)});
+  document.getElementById("pub-list").innerHTML=groups.map(function(g){return '<div class="yeargroup"><h3>'+esc(g)+'</h3><ul class="pubs">'+map[g].map(item).join("")+'</ul></div>'}).join("");
+  document.getElementById("filters").innerHTML=FILTERS.map(function(f){return '<button type="button" class="chip" id="f-'+f[0]+'" data-f="'+f[0]+'" aria-pressed="'+(f[0]===current)+'">'+f[1]+'<span class="n">'+P.filter(f[2]).length+'</span></button>'}).join("");
+}
+document.getElementById("filters").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;current=b.getAttribute("data-f");render()});
+render();
+document.getElementById("recent-pubs").innerHTML=P.filter(function(p){return !p.s}).slice(0,4).map(item).join("");
+
+/* views */
+var VIEWS=["home","research","publications","experience","education","awards","talks","service","skills"];
+function show(){
+  var h=(location.hash||"").slice(1);if(VIEWS.indexOf(h)<0)h="home";
+  VIEWS.forEach(function(v){document.getElementById("v-"+v).hidden=(v!==h)});
+  document.querySelectorAll("nav a").forEach(function(a){if(a.getAttribute("href")==="#"+h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  var cur=document.querySelector('nav a[aria-current="page"]');if(cur&&cur.scrollIntoView){try{cur.scrollIntoView({block:"nearest",inline:"nearest"})}catch(e){}}
+}
+document.addEventListener("click",function(e){
+  var a=e.target.closest('a[href^="#"]');if(!a)return;
+  var h=a.getAttribute("href").slice(1);if(VIEWS.indexOf(h)<0)return;
+  e.preventDefault();
+  try{history.pushState(null,"","#"+h)}catch(err){location.hash=h}
+  show();window.scrollTo(0,0);
+});
+window.addEventListener("hashchange",show);window.addEventListener("popstate",show);
+show();
+
+/* copy email */
+document.getElementById("copy-email").addEventListener("click",function(){
+  var b=this,t=document.getElementById("email").textContent;
+  function done(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1600)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById("email"));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Press Ctrl+C"}
+  try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+});
+})();
+</script>
+
+</body>
+</html>
